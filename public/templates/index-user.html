@@ -1,0 +1,67 @@
+<div class="row">
+  <div class="page-header">
+  	<a class="btn btn-default" style="float:right" ng-click="logout()">Cerrar sesión</a>
+    <h1>Hola, {{user.name}}!</h1>
+  </div>
+</div> 
+<div class="row">
+  <div class="page-header">
+    <h3>Tu entrenamiento de hoy:</h3>
+  </div>
+</div> 
+<div class="row" ng-hide="todayTraining">
+	<div class="col-md-12">
+		<h4 style="font-style:italic">Sin entrenamiento asignado</h4>
+	</div>
+</div>
+<div class="row" ng-repeat="training in todayTraining track by $index">
+	<div class="col-md-1">
+		<strong>{{getTrainingType(typeTrainings,training.training_type)}}</strong>
+	</div>
+	<div class="col-md-11">
+		<p>{{training.name}}</p>
+		<p style="white-space: pre">{{training.description}}</p>
+	</div>
+</div>
+<div class="row">
+	<a href="#/user/calendar">Ver calendario...</a>
+</div>
+<div class="row">
+  <div class="page-header">
+    <h3>Últimos mensajes:</h3>
+  </div>
+</div> 
+<div class="row" ng-repeat="msg in messages track by $index">
+	<div class="col-md-2">
+		<p><strong>De:</strong> admin</p>
+		<p><strong>Fecha:</strong> {{msg.created_at}}</p>
+	</div>
+	<div class="col-md-9">
+		<p><strong>Asunto:</strong> {{msg.subject}}</p>
+		<p style="">{{msg.message}}</p>
+	</div>
+	<div class="col-md-1">
+		<a class="btn btn-primary" href="#/user/message/{{msg._id}}">Leer mensaje</a>
+	</div>
+	<hr/>
+</div>	
+<div class="row">
+	<a href="#/user/messages" ng-show="messages">Ver más mensajes...</a>
+</div>
+<div class="row">
+	<a href="#/user/messages/new">Escribir mensaje</a>
+</div>
+<div class="row">
+  <div class="page-header">
+    <h3>Últimas noticias:</h3>
+  </div>
+</div> 
+<div class="row" ng-repeat="article in articles track by $index">
+	<div class="col-md-12">
+		<h5><strong><a href="{{article.link}}" target="_blank">{{article.title}}</a></strong></h5>
+	</div>	
+	<hr/>
+</div>	
+<div class="row">
+	<a href="https://antoniopajuelo.wordpress.com/" target="_blank">Ver noticias...</a>
+</div>

@@ -1,0 +1,31 @@
+
+<div class="row">
+  <div class="page-header">
+    <h1>Training types</h1>      
+  </div>
+</div> 
+<div class="row">
+  <form class="form-inline" role="form">
+    <div class="form-group">
+      <label class="sr-only" for="name">Name</label>
+      <input type="text" class="form-control" id="name" placeholder="Introduce el tipo" ng-model="trainingType.name">
+    </div>  
+    <div class="form-group">
+      <label class="sr-only" for="name">Color</label>
+      <select class="form-control" ng-model="trainingType.training_type">
+  		<option value="" selected>Seleccione color</option>		
+  		<option class="alert-warning" value="warning">Amarillo</option>		
+  		<option class="alert-info" value="info">Azul</option>		
+  		<option class="alert-danger" value="danger">Rojo</option>  	    
+  		<option class="alert-success" value="success">Verde</option>
+    	</select>    
+    </div>  
+    <button type="submit" class="btn btn-default" ng-click="submitTrainingType()">Enviar</button>
+  </form>
+  &nbsp;
+</div>
+<div class="row">
+	<div ng-class="{'col-sm-3':true, 'col-md-offset-1': $index%3 != 0, 'alert-success':type.training_type=='success', 'alert-danger':type.training_type=='danger', 'alert-warning':type.training_type=='warning', 'alert-info':type.training_type=='info', 'training-block':true}" ng-click="selectTraining(5)" ng-repeat="type in typeTrainings track by $index">
+    	<div class="panel-heading">{{type.name}}</div>          
+    </div>
+</div>

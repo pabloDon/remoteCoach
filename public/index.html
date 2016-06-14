@@ -1,0 +1,37 @@
+<!-- index.html -->
+<!doctype html>
+
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html ng-app="remoteCoachModule">
+<head>
+    <!-- META -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+
+    <title>Remote Coach - v.1.0.0</title>
+
+    <!-- SCROLLS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<!-- SET THE CONTROLLER AND GET ALL TODOS -->
+<body>
+    <div class="container">
+        <div ng-view></div>
+    </div>
+</body>
+
+<!-- SPELLS -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.min.js"></script><!-- load angular -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular-route.min.js"></script><!-- load angular-route -->
+    <script src="js/app.js"></script>    
+    <script src="js/directives.js"></script>    
+    <script src="js/utils.js"></script>
+    <script src="js/userController.js"></script>
+    <script src="js/loginController.js"></script>
+    <script src="js/userAdminController.js"></script>
+    <script src="js/trainingController.js"></script>
+    <script src="js/restService.js"></script>    
+    <script src="js/userService.js"></script>
+</html>

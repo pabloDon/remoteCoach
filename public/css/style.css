@@ -1,0 +1,56 @@
+.monthDay {
+    position: relative;
+    top: -7px;
+    left: -5px;
+    color: #dedede;
+    font-size: .9em;
+}
+.training-day {
+	border-radius: 3px;
+    margin: 1px 0;
+}
+.training-block {
+	margin-top: 5px;
+}
+.thumb_title {
+	display: inline-block;
+    max-width: 90%;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+}
+.thumb_paragraph {
+	white-space: pre-line;
+    height: 50px;
+    overflow-y: scroll;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 3px;
+}
+
+.training-day .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    white-space: pre;
+ 
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    margin-top: 20px;
+    margin-left: 60px;
+    z-index: 1;
+}
+.training-day:hover .tooltiptext {
+    visibility: visible;
+    white-space: pre-wrap;
+}
+.times-training {
+    position: relative;
+    right: 3px;
+    top: 3px;
+    float: right;
+}

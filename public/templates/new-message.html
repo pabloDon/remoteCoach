@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="page-header">
+    <a class="btn btn-default" style="float:right" href="#/user/messages">Volver</a>
+    <h1>Nuevo mensaje</h1>
+  </div>
+</div> 
+
+<div class="row">
+  <div class="col-sm-1"><p><strong>De:</strong></p></div>
+  <div class="col-sm-11"><p><span>{{user.name}} {{user.surname}}</span></p></div>
+</div> 
+
+<div class="row">
+  <div class="col-sm-1"><p><strong>A:</strong></p></div>
+  <div class="col-sm-11"><p><span>Entrenador</span></p></div>
+</div> 
+
+<div class="row">
+  <div class="col-sm-1"><p><strong>Asunto:</strong></p></div>
+  <div class="col-sm-11"><input type="text" class="form-control" ng-model="message.subject"/></div>
+</div> 
+
+<div class="row">
+  <div class="col-sm-1"><p><strong>Mensaje:</strong></p></div>
+ </div> 
+
+<div class="row">
+  <div class="col-sm-12"><textarea rows="5" class="form-control" ng-model="message.message"></textarea></div>
+</div> 
+
+<div class="row">
+	<div class="col-sm-12">
+		<p>
+		  <a ng-click="submitMessage()" class="btn btn-primary" style="float:right">Enviar</a>
+		</p>
+	</div>
+</div> 

@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="page-header">
+    <a class="btn btn-default" style="float:right" href="#/user/index">Volver</a>
+    <h1>Mi calendario</h1>
+  </div>
+</div> 
+
+<div class="row">
+  <div class="col-md-12">
+    <h2>Calendario</h2>
+    <p style="text-align:center">
+      <span><a href="{{getPrevMonth()}}">Mes anterior</a></span>
+      <strong style="margin-left:3em">{{getFormatDate(month, year)}}</strong>
+      <span style="margin-left:3em"><a href="{{getNextMonth()}}">Mes siguiente</a></span>
+    </p>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Lunes</th>
+          <th>Martes</th>
+          <th>Miércoles</th>
+          <th>Jueves</th>
+          <th>Viernes</th>
+          <th>Sábado</th>
+          <th>Domingo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="week in monthDays track by $index">
+          <td ng-repeat="day in week track by $index" onMouseOver="this.style.backgroundColor='#d3d3d3'" id="{{day}}"
+                                      onMouseOut="this.style.backgroundColor='#FFF'" ng-click="assignTraining(day)">
+            <span class="monthDay">{{day}}</span>
+            &nbsp;
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

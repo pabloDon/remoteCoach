@@ -1,0 +1,67 @@
+
+<div class="row">
+  <div class="page-header">
+    <h1>Lista de entrenamientos</h1>      
+  </div>
+</div> 
+<div class="row">
+	<div class="col-md-12">
+		<a class="btn btn-primary" href="#/admin/trainings/new">Nuevo entrenamiento</a>
+		<a href="#/admin/index" class="btn btn-default">Volver al inicio</a>
+	</div>
+</div>
+<div class="row">&nbsp;</div>
+<div class="row">
+	<div class="col-md-6">
+		<div class="page-header">
+	      <h3>Filtro</h3>
+	      <select name="show-filter" ng-model="typeFilter" ng-options="type as type.name for type in typeTrainings" class="form-control">
+	        <option value="">Filtro por tipo entrenamiento</option>
+	      </select>      
+	      <input type="text" ng-model="nameFilter" placeholder="Filtro por nombre" class="form-control"/>
+	      <input type="text" ng-model="textFilter" placeholder="Filtro por descripción" class="form-control"/>
+	      &nbsp;
+	      <p>
+	      	<a ng-click="resetFilter()" style="cursor:pointer" class="btn btn-default">Limpiar filtro</a>
+	      </p>
+	    </div>
+		<ul style="list-style:none; padding: 0">
+	    	<li ng-repeat="training in trainings | filter : {training_type: typeFilter._id, description : textFilter, name : nameFilter}: false">
+	        	<div class="panel panel-{{getTrainingTypeColor(typeTrainings, training.training_type)}}" ng-click="showTraining(training)">
+	          		<div class="panel-heading">{{training.name}}</div>
+	          		<div class="panel-content"><p style="white-space: pre;">{{training.description}}</p></div>
+	        	</div>
+	      	</li>
+	  	</ul>
+	</div>
+
+	<div class="col-md-5 col-md-offset-1">
+		<form class="form-horizontal" role="form">
+		  <div class="form-group">
+		    <label for="name" >Nombre</label>
+		    <input type="text" class="form-control" id="name"
+		             placeholder="Nombre entrenamiento" ng-model="training.name" ng-disabled="!training._id">
+		  </div>
+		  <div class="form-group">
+		    <label for="training_type" class="">Tipo entrenamiento</label>
+		    <select class="form-control" ng-model="training.training_type" ng-disabled="!training._id">
+				<option value="" selected>Seleccione...</option>
+		    	<option ng-repeat="type in typeTrainings track by $index" value="{{type._id}}">{{type.name}}</option>
+			  </select>
+		  </div>
+		  <div class="form-group">
+		    <label for="description" class="">Descripción</label>
+		    <textarea class="form-control" rows="10" id="description" ng-model="training.description" ng-disabled="!training._id"></textarea>
+		  </div>
+		  <div class="form-group">
+		    <label for="notes" class="">Notas (solo visible por ti)</label>
+		    <textarea class="form-control" rows="3" id="notes" ng-model="training.notes" ng-disabled="!training._id"></textarea>
+		  </div>
+		  <div class="form-group">
+		  	<button type="submit" class="btn btn-primary" ng-click="refreshForm()" ng-disabled="!training._id">Actualizar</button>
+		  	<a ng-click="resetForm()" style="cursor:pointer" class="btn btn-default" ng-disabled="!training._id">Limpiar campos</a>
+		  	<a confirmed-click="removeForm()" ng-confirm-click="¿Deseas eliminar este entrenamiento? Se actualizarán todos los entrenamientos de tus clientes" style="cursor:pointer; float:right" class="btn btn-danger" ng-disabled="!training._id">Eliminar entrenamiento</a>
+		  </div>
+		</form>
+	</div>
+</div>
