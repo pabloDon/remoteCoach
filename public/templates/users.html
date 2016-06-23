@@ -1,53 +1,56 @@
-<div class="row">
-  <div class="page-header">
-    <h1>Clientes</h1>      
-  </div>
-</div> 
-<div class="row">
-	<div class="col-md-12">
-		<a class="btn btn-primary" href="#/admin/users/new">Nuevo usuario</a>		
-		<a class="btn btn-default" href="#/admin/index">Volver al inicio</a>
-	</div>
-	&nbsp;
-</div>
-<div class="row">
-	<div class="col-md-12">
-		<div class="page-header">
-	      <h3>Filtro</h3>	      
-	      <div class="container">
-	      	<div class="row">
-	      		<div class="col-sm-3">
-	      			<input type="text" ng-model="nameFilter" placeholder="Filtro por nombre" class="form-control col-sm-6"/>
-	      		</div>
-	      		<div class="col-sm-3">
-	      			<input type="text" ng-model="surnameFilter" placeholder="Filtro por apellidos" class="form-control col-sm-6"/>
-	      		</div>	      	      	
-	      		<div class="col-sm-6">
-	      			<input type="text" ng-model="textFilter" placeholder="Filtro por objetivos" class="form-control"/>
-	      		</div>
-	      	</div>
-	      </div>
-	      &nbsp;
-	      <p>
-	      	<a class="btn btn-info" href="#/admin/users?showonly=clients" ng-hide="isThereParams">Ver sólo clientes</a>
-			<a class="btn btn-success" href="#/admin/users?showonly=clubs" ng-hide="isThereParams">Ver sólo clubs</a>
-			<a class="btn btn-primary" href="#/admin/users" ng-show="isThereParams">Ver todos</a>
-		  </p>
-	      <p>
-	      	<a ng-click="resetFilter()" style="cursor:pointer" class="btn btn-default">Limpiar filtro</a>
-	      </p>
-	    </div>		
-	</div>
-</div>
-
-<div class="row">
-	<div class="col-sm-6 col-md-4" ng-repeat="user in users | filter : {training_type: typeFilter._id, objectives : textFilter, name : nameFilter, surname : surnameFilter}: false" style="margin-bottom:3px">
-	    <div class="thumbnail">
-	      <div class="caption">
-	        <h3 class="thumb_title">{{user.name}} {{user.surname}}</h3>
-	        <p class="thumb_paragraph">{{user.objectives}}</p>
-	        <p><a href="#/admin/trainings/{{user._id}}" class="btn btn-primary" role="button">Ver {{user.isClub? "club" : "usuario"}}</a></p>
-	      </div>
-	    </div>
+<div class="container">
+	<div class="row">
+	  <div class="page-header">
+	    <h1>Clientes</h1>      
 	  </div>
-	</div>	
+	</div> 
+	<div class="row">
+		<div class="col-md-12">
+			<a class="btn btn-primary" href="#/admin/users/new">Nuevo usuario</a>		
+			<a class="btn btn-default" href="#/admin/index">Volver al inicio</a>
+		</div>
+		&nbsp;
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="page-header">
+		      <h3>Filtro</h3>	      
+		      <div class="container">
+		      	<div class="row">
+		      		<div class="col-sm-3">
+		      			<input type="text" ng-model="nameFilter" placeholder="Filtro por nombre" class="form-control col-sm-6"/>
+		      		</div>
+		      		<div class="col-sm-3">
+		      			<input type="text" ng-model="surnameFilter" placeholder="Filtro por apellidos" class="form-control col-sm-6"/>
+		      		</div>	      	      	
+		      		<div class="col-sm-6">
+		      			<input type="text" ng-model="textFilter" placeholder="Filtro por objetivos" class="form-control"/>
+		      		</div>
+		      	</div>
+		      </div>
+		      &nbsp;
+		      <p>
+		      	<a class="btn btn-info" href="#/admin/users?showonly=clients" ng-hide="isThereParams">Ver sólo clientes</a>
+				<a class="btn btn-success" href="#/admin/users?showonly=clubs" ng-hide="isThereParams">Ver sólo clubs</a>
+				<a class="btn btn-primary" href="#/admin/users" ng-show="isThereParams">Ver todos</a>
+			  </p>
+		      <p>
+		      	<a ng-click="resetFilter()" style="cursor:pointer" class="btn btn-default">Limpiar filtro</a>
+		      </p>
+		    </div>		
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-6 col-md-4" ng-repeat="user in users | filter : {training_type: typeFilter._id, objectives : textFilter, name : nameFilter, surname : surnameFilter}: false" style="margin-bottom:3px">
+		    <div class="thumbnail">
+		      <div class="caption">
+		        <h3 class="thumb_title">{{user.name}} {{user.surname}}</h3>
+		        <p class="thumb_paragraph">{{user.objectives}}</p>
+		        <p><a href="#/admin/trainings/{{user._id}}" class="btn btn-primary" role="button">Ver {{user.isClub? "club" : "usuario"}}</a></p>
+		      </div>
+		    </div>
+		  </div>
+		</div>	
+	</div>
+</div>

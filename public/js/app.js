@@ -6,6 +6,18 @@ coachModule.config(function($routeProvider, $locationProvider) {
     templateUrl: 'templates/index.html',
     controller: 'IndexController'
   })
+  .when('/acerca-de', {
+    templateUrl: 'templates/about.html',
+    controller: 'IndexController'
+  })
+  .when('/servicios', {
+    templateUrl: 'templates/services.html',
+    controller: 'IndexController'
+  })
+  .when('/contacto', {
+    templateUrl: 'templates/contact.html',
+    controller: 'IndexController'
+  })
   
   .when('/admin/login', {
     templateUrl: 'templates/loginAdmin.html',
@@ -84,6 +96,7 @@ coachModule.config(function($routeProvider, $locationProvider) {
 });
 
 coachModule.controller('IndexController', function($scope, $http) {
+  $scope.isContainerFull = true;
   console.log("Index");
 });
 

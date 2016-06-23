@@ -1,51 +1,53 @@
-<div class="row">
-  <div class="page-header">
-    <h1>Nuevo usuario</h1>      
-  </div>
-</div> 
+<div class="container">
+		<div class="row">
+	  <div class="page-header">
+	    <h1>Nuevo usuario</h1>      
+	  </div>
+	</div> 
 
-<div class="row">
-	<div class="col-md-6 col-md-offset-3">
-		<form role="form">
-		  <div class="form-group">
-		    <label for="nombre">Nombre de cliente</label>
-		    <input type="text" class="form-control" id="nombre" ng-model="user.name"
-		           placeholder="Nombre cliente">
-		  </div>
-		  <div class="form-group">
-		    <label for="nombre">Apellidos de cliente</label>
-		    <input type="text" class="form-control" id="nombre" ng-model="user.surname"
-		           placeholder="Apellidos cliente">
-		  </div>
-		  <div class="form-group">
-		    <label for="email">E-mail</label>
-		    <input type="email" class="form-control" id="email" ng-model="user.email" 
-		           placeholder="E-mail cliente">
-		  </div>
-		  <div class="form-group">
-		    <label for="phone">Teléfono de contacto</label>
-		    <input type="tel" class="form-control" id="phone" ng-model="user.phone" 
-		           placeholder="Teléfono cliente">
-		  </div>
-		  <div class="checkbox">
-		    <label>
-		      <input type="checkbox" ng-model="user.isClub"> Es un club/colectivo
-		    </label>
-		  </div>
-		  <div class="form-group">
-		    <label for="bday">Fecha de nacimiento</label>
-		    <input type="text" class="form-control" id="bday" ng-model="user.bday" 
-		           placeholder="dd/MM/aaaa">
-		  </div>
-		  <div class="form-group">
-		    <label for="phone">Objetivos</label>
-		    <textarea rows="6" class="form-control" id="phone" ng-model="user.objectives" 
-		           placeholder="Objetivos, metas, valoraciones previas"></textarea>
-		  </div>
-		  <div class="form-group">
-			  <button type="submit" class="btn btn-primary" ng-click="submitUser()">Enviar</button>
-			  <a href="#/admin/users" class="btn btn-default">Cancelar</a>
-		  </div>
-		</form>
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+			<form role="form">
+			  <div class="form-group">
+			    <label for="nombre">Nombre de cliente</label>
+			    <input type="text" class="form-control" id="nombre" ng-model="user.name"
+			           placeholder="Nombre cliente">
+			  </div>
+			  <div class="form-group">
+			    <label for="nombre">Apellidos de cliente</label>
+			    <input type="text" class="form-control" id="nombre" ng-model="user.surname"
+			           placeholder="Apellidos cliente">
+			  </div>
+			  <div class="form-group">
+			    <label for="email">E-mail</label>
+			    <input type="email" class="form-control" id="email" ng-model="user.email" 
+			           placeholder="E-mail cliente">
+			  </div>
+			  <div class="form-group">
+			    <label for="phone">Teléfono de contacto</label>
+			    <input type="tel" class="form-control" id="phone" ng-model="user.phone" 
+			           placeholder="Teléfono cliente">
+			  </div>
+			  <div class="checkbox">
+			    <label>
+			      <input type="checkbox" ng-model="user.isClub"> Es un club/colectivo
+			    </label>
+			  </div>
+			  <div class="form-group">
+			    <label for="bday">Fecha de nacimiento</label>
+			    <input type="text" class="form-control" id="bday" ng-model="user.bday" 
+			           placeholder="dd/MM/aaaa">
+			  </div>
+			  <div class="form-group">
+			    <label for="phone">Objetivos</label>
+			    <textarea rows="6" class="form-control" id="phone" ng-model="user.objectives" 
+			           placeholder="Objetivos, metas, valoraciones previas"></textarea>
+			  </div>
+			  <div class="form-group">
+				  <button type="submit" class="btn btn-primary" ng-click="submitUser()">Enviar</button>
+				  <a href="#/admin/users" class="btn btn-default">Cancelar</a>
+			  </div>
+			</form>
+		</div>
 	</div>
 </div>

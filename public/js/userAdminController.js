@@ -118,8 +118,8 @@ coachModule.controller('UserAdminController', function($scope, restService, user
 
   //Logout
   $scope.logout = function() {
-    userService.restService();
-    $location.path( "/user/login" );
+    userService.resetUser();
+    $location.path( "/" );
   }
 
   //Articles

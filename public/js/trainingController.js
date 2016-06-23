@@ -1,6 +1,6 @@
 coachModule.controller('TrainingController', function($scope, restService, userService, $routeParams, $compile, $location) {
   if (userService.redirectLoginIfNotAdmin()) {
-    $location.path( "/admin/login" );
+    $location.path( "#/admin/login" );
     return;
   }
 

@@ -7,9 +7,11 @@
     var methodOverride = require('method-override'); // simulate DELETE and PUT (express4)
     var getCrypted = require('./utils/utils.js').getCrypted;
     var Watcher = require('rss-watcher');
+    var email = require('emailjs');
 
     // configuration =================
     mongo.connect('mongodb://localhost/remoteCoach', function(err, db) {
+        if (err) throw err;
 
         app.use(express.static(__dirname + '/public'));                 // set the static files location /public/img will be /img for users
         app.use(morgan('dev'));                                         // log every request to the console
@@ -17,6 +19,13 @@
         app.use(bodyParser.json());                                     // parse application/json
         app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api+json as json
         app.use(methodOverride());
+
+        var server = email.server.connect({
+           user:    "pablodonaire@hotmail.com", 
+           password:"TextoExpositivo5", 
+           host:    "smtp-mail.outlook.com", 
+           tls: {ciphers: "SSLv3"}
+        });
 
         app.get('/rest/users', function(req, res) {
             var users = db.collection('users');
@@ -47,7 +56,6 @@
             });
         });
         app.get('/rest/users/:idUser', function(req, res) {
-            console.log("ID USER:", req.params.idUser)
             var users = db.collection('users');
             users.find({_id: new mongo.ObjectID(req.params.idUser)}).toArray(function(err, result) {
                 if (err) throw err; 
@@ -62,7 +70,24 @@
             req.body.role = 'user';
             users.insert(req.body, function(err, result) { 
                 if (err) throw err;
+                
+                var message = {
+                   text:    "i hope this works", 
+                   from:    "Mister <pablodonaire@hotmail.com>", 
+                   to:      req.body.email,
+                   subject: "Bienvenido a Remote Coach!",
+                   attachment: [{data:"<html>i <i>hope</i> this works!</html>", alternative:true}]
+                };
+                 
+                // send the message and get a callback with an error or details of the message that was sent 
+                server.send(message, function(err, message) { 
+                    console.log(err || message); 
+                });
+
                 res.json(result.ops[0]);
+
+
+
             });
         });
         app.get('/rest/trainings/:user_id/:month/:year', function(req, res) {
@@ -230,13 +255,22 @@
 
         app.get('/rest/latest10articles', function(req, res) {
             var feed = 'http://antoniopajuelo.wordpress.com/feed/';
-            watcher = new Watcher(feed)
+            try {
+                watcher = new Watcher(feed)
 
-            watcher.run(function(err,articles) {
-                if (err) throw err;
-                articles.reverse();
-                res.json({data: articles.slice(0,10)});
-            });  
+                watcher.run(function(err,articles) {
+                    if (err) {
+                        console.log("Error getting articles:", err);
+                        res.json({data: []});
+                    } else {
+                        articles.reverse();
+                        res.json({data: articles.slice(0,10)});
+                    }
+                });
+            } catch (err) {
+                console.log("Error while getting articles:", err);
+                res.json({data:[]});
+            }
         });        
 
 
