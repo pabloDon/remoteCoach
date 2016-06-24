@@ -98,6 +98,7 @@ coachModule.config(function($routeProvider, $locationProvider) {
 coachModule.controller('IndexController', function($scope, $http) {
   $scope.isContainerFull = true;
   console.log("Index");
+  $scope.contact = {};
 });
 
 coachModule.controller('AdminController', function($scope, $http) {
