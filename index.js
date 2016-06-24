@@ -271,7 +271,35 @@
                 console.log("Error while getting articles:", err);
                 res.json({data:[]});
             }
-        });        
+        });   
+        
+        app.post('/rest/contactForm', function(req, res) {
+            var messageToAdmin = {
+                   text:    req.body.body, 
+                   from:    req.body.email, 
+                   to:      "pablodonaire@gmail.com",
+                   subject: "[Anfibia] Recibido mensaje de formulario de contacto",
+                   attachment: [{data:"<html>" + req.body.body + "<br/><p><br/><p>Nombre: " + req.body.name + "</p><p>Teléfono: " + req.body.phone + "</p></html>", alternative:true}]
+            };
+             
+            // send the message and get a callback with an error or details of the message that was sent 
+            server.send(messageToAdmin, function(err, messageToAdmin) {
+                if (err) throw err;
+
+                var messageToUser = {
+                   text:    "Gracias por ponerte en contacto con nosotros", 
+                   from:    "no-reply@anfibia.com", 
+                   to:      req.body.email,
+                   subject: "[Anfibia] Mensaje recibido!",
+                   attachment: [{data:"<html>Gracias por ponerte en contacto con nosotros! En un tiempo inferior a 24/48 horas nos pondremos en contacto contigo</html>", alternative:true}]
+                };    
+
+                server.send(messageToUser, function(err, messageToUser) {
+                    if (err) console.log("Error sending confirmation message to user:", err);
+                    res.json({});
+                });
+            });
+        });
 
 
 

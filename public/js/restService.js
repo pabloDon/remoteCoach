@@ -146,6 +146,13 @@ coachModule.factory('restService', function($http) {
         return response.data;
       });
       return promise;
+    },
+
+    sendContactForm: function(contact) {
+      var promise = $http.post("/rest/contactForm", contact).success(function(data, status) {
+        return data;
+      });
+      return promise;
     }
   };
 });

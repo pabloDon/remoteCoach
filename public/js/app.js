@@ -95,10 +95,33 @@ coachModule.config(function($routeProvider, $locationProvider) {
   .otherwise({redirectTo: '/'});
 });
 
-coachModule.controller('IndexController', function($scope, $http) {
+coachModule.controller('IndexController', function($scope, $http, $routeParams, restService) {
   $scope.isContainerFull = true;
   console.log("Index");
   $scope.contact = {};
+  if ($routeParams.pack) {
+    if ($routeParams.pack == "ironman") {
+      $scope.contact.body = "Estoy interesado en el pack IRONMAN y quiero que me envíen más información.";
+    } else if ($routeParams.pack == "delfin") {
+      $scope.contact.body = "Estoy interesado en el pack DELFIN y quiero que me envíen más información.";
+    } else if ($routeParams.pack == "amateur") {
+      $scope.contact.body = "Estoy interesado en el pack AMATEUR y quiero que me envíen más información.";
+    }
+  }
+
+  verifyData = function() {
+    return $scope.contact.name && $scope.contact.email && $scope.contact.body && $scope.contact.body.length > 10;
+  };
+
+  $scope.sendContact = function() {
+    if (verifyData()) {
+        restService.sendContactForm($scope.contact).then(function(response) {
+          if (response.data.length != 0) {
+            $scope.contact = {};
+          }
+        });
+    }
+  }
 });
 
 coachModule.controller('AdminController', function($scope, $http) {
